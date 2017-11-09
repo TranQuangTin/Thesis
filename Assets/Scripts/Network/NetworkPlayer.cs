@@ -349,6 +349,7 @@ namespace Tanks.Networking
 
 		protected void AddClientToServer()
 		{
+            //quangtin
 			Debug.Log("CmdClientReadyInScene");
 			GameObject tankObject = Instantiate(m_TankPrefab);
 			NetworkServer.SpawnWithClientAuthority(tankObject, connectionToClient);

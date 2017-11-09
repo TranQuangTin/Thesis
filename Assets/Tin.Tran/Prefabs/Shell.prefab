@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 2387822}
   - component: {fileID: 5409530}
   - component: {fileID: 114976973039634402}
+  - component: {fileID: 114980330329189920}
+  - component: {fileID: 114232867158276932}
   m_Layer: 10
   m_Name: Shell
   m_TagString: Untagged
@@ -413,6 +415,27 @@ TrailRenderer:
     textureMode: 0
   m_MinVertexDistance: 0.1
   m_Autodestruct: 1
+--- !u!114 &114232867158276932
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 192454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1768714887, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_TransformSyncMode: 3
+  m_SendInterval: 0
+  m_SyncRotationAxis: 7
+  m_RotationSyncCompression: 0
+  m_SyncSpin: 0
+  m_MovementTheshold: 0.001
+  m_VelocityThreshold: 0.0001
+  m_SnapThreshold: 5
+  m_InterpolateRotation: 1
+  m_InterpolateMovement: 1
 --- !u!114 &114976973039634402
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -425,6 +448,38 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Trail: {fileID: 1000012883413784}
+--- !u!114 &114980330329189920
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 192454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 166
+    i1: 143
+    i2: 168
+    i3: 153
+    i4: 52
+    i5: 211
+    i6: 36
+    i7: 170
+    i8: 184
+    i9: 108
+    i10: 227
+    i11: 46
+    i12: 4
+    i13: 192
+    i14: 92
+    i15: 171
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 0
 --- !u!198 &198231782047052476
 ParticleSystem:
   m_ObjectHideFlags: 1

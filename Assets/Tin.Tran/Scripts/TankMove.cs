@@ -3,22 +3,28 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 
-public class TankMove : MonoBehaviour
+public class TankMove : NetworkBehaviour
 {
     public float speed = 1f;
     public float rotatespeed = 3f;
-
+    Transform MainCamera;
 
     public Rigidbody rigidbody;
 
     private void Start()
     {
+        Debug.Log("Tank Move start");
         rigidbody = gameObject.GetComponent<Rigidbody>();
+        MainCamera = Camera.main.transform;
     }
     private void Update()
     {
         //multy
-        //if (!isLocalPlayer) return;
+        if (Input.GetKeyDown(KeyCode.F2))
+        {
+            Debug.Log("aaa: " + isLocalPlayer);
+        }
+        if (!isLocalPlayer) return;
         Move(Input.GetAxis("Vertical"));
         Turn(Input.GetAxis("Horizontal"));
     }
@@ -26,7 +32,9 @@ public class TankMove : MonoBehaviour
     private void Move(float value)
     {
         Vector3 movement = transform.forward * value * 4 * Time.deltaTime;
-        rigidbody.MovePosition(rigidbody.position + movement);
+        Vector3 target = rigidbody.position + movement;
+        rigidbody.MovePosition(target);
+        MainCamera.position = new Vector3(target.x, target.y + 5.5f, target.z - 9);
     }
 
 

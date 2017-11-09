@@ -943,7 +943,7 @@ namespace Tanks.Networking
 		{
 			// Intentionally not calling base here - we want to control the spawning of prefabs
 			Debug.Log("OnServerAddPlayer");
-
+            //quangtin
 			NetworkPlayer newPlayer = Instantiate<NetworkPlayer>(m_NetworkPlayerPrefab);
 			DontDestroyOnLoad(newPlayer);
 			NetworkServer.AddPlayerForConnection(conn, newPlayer.gameObject, playerControllerId);

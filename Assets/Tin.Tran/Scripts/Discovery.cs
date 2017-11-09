@@ -41,7 +41,7 @@ public class Discovery : MonoBehaviour
         if (!string.IsNullOrEmpty(Server_Message))
         {
             sender.Send(Encoding.ASCII.GetBytes(Server_Message), Server_Message.Length);
-            Debug.Log(Server_Message);
+           // Debug.Log(Server_Message);
         }
     }
     public void StopReceiveData()

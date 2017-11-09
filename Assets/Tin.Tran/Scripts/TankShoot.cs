@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Networking;
 
 //multy
-public class TankShoot : MonoBehaviour
+public class TankShoot : NetworkBehaviour
 {
     public GameObject bulletPrefab;
     public Transform bulletSpawn;
@@ -12,13 +12,14 @@ public class TankShoot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!isLocalPlayer) return;
         if (Input.GetKeyDown(KeyCode.Space))
         {
             CmdFire();
         };
     }
     //multy
-    //[Command]
+    [Command]
     void CmdFire()
     {
         var bullet = (GameObject)Instantiate(
@@ -27,7 +28,7 @@ public class TankShoot : MonoBehaviour
             bulletSpawn.rotation);
         bullet.GetComponent<Rigidbody>().velocity = bullet.transform.forward * 10;
         //multy
-        //NetworkServer.Spawn(bullet);
-        //Destroy(bullet, 2.0f);
+        NetworkServer.Spawn(bullet);
+        Destroy(bullet, 2.0f);
     }
 }

@@ -75,6 +75,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Singleplayer/ShootingRange.unity
     guid: 0c68a706224c244fcabd4e2d7781b758
   - enabled: 1
+    path: Assets/Tin.Tran/Scenes/Lobby.unity
+    guid: a35f1f66a8cc61a46aaa0eee204298f2
+  - enabled: 0
     path: Assets/Tin.Tran/Scenes/Preload.unity
     guid: 62dbc2dccb9e47b4d8fdf639c460baaa
   - enabled: 1

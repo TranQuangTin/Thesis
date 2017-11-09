@@ -15,7 +15,7 @@ public class Preload : MonoBehaviour
 
 
 
-    NetworkManager manager;
+    public TinNetwork manager;
     Discovery dc;
 
 
@@ -23,7 +23,7 @@ public class Preload : MonoBehaviour
     private void Awake()
     {
         Global = this;
-        manager = gameObject.GetComponent<NetworkManager>();
+        manager = gameObject.GetComponent<TinNetwork>();
         dc = gameObject.GetComponent<Discovery>();
     }
 
@@ -39,20 +39,18 @@ public class Preload : MonoBehaviour
     }
     private IEnumerator WaitForConnect()
     {
-        yield return new WaitForSeconds(10);
+        yield return new WaitForSeconds(2);
         if (manager.isNetworkActive == true && manager.IsClientConnected() == true) yield break;
         Debug.Log("*** Start server ***");
         dc.StopReceiveData();
-        bool tmp = false; ;
         try
         {
-            tmp = manager.StartServer();
+            manager.StartHost();
         }
         catch
         {
             OnListenServer("aa", Network.player.ipAddress);
         }
-        Debug.Log("Server status: " + tmp);
         dc.Server_isServer = true;
         dc.Server_TimeRepeat = 2;
         dc.Server_Message = manager.IsClientConnected().ToString();

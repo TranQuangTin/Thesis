@@ -10,8 +10,8 @@ PlayerSettings:
   targetDevice: 2
   useOnDemandResources: 0
   accelerometerFrequency: 0
-  companyName: Unity Technologies
-  productName: Tanks!!!
+  companyName: Tran Quang Tin
+  productName: Tanks
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13333334, g: 0.17254902, b: 0.21176471, a: 1}
@@ -138,7 +138,7 @@ PlayerSettings:
   useHDRDisplay: 0
   applicationIdentifier:
     Android: com.unity3d.tanksiii
-    Standalone: unity.Unity Technologies.Tanks!!!
+    Standalone: com.Tin.Tanks
     Tizen: com.unity3d.tanksiii
     iOS: com.unity3d.tanksiii
     tvOS: com.unity3d.tanksiii
@@ -731,8 +731,8 @@ PlayerSettings:
       daydreamIconBackground: {fileID: 0}
   cloudServicesEnabled:
     Analytics: 0
-    Build: 1
-    Collab: 1
+    Build: 0
+    Collab: 0
     ErrorHub: 0
     Game_Performance: 0
     Hub: 0
@@ -741,8 +741,8 @@ PlayerSettings:
     Unity_Ads: 0
   facebookSdkVersion: 7.9.1
   apiCompatibilityLevel: 2
-  cloudProjectId: 353cbc0c-2cdc-4769-a831-7f1573609386
-  projectName: TANKS
-  organizationId: will-goldstone
+  cloudProjectId: 56dbd768-6921-47f2-b00d-5d3076ab0a87
+  projectName: Tanks
+  organizationId: tranquangtin
   cloudEnabled: 0
   enableNewInputSystem: 0

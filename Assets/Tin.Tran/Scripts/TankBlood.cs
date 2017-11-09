@@ -5,14 +5,19 @@ using UnityEngine.Networking;
 
 
 //multy
-public class TankBlood : MonoBehaviour
+public class TankBlood : NetworkBehaviour
 {
     public int Total;
     public GameObject BloodCube;
     public GameObject Destroyed;
+    private NetworkStartPosition[] spawnPoints;
     private void Start()
     {
         Total = 100;
+        if (isLocalPlayer)
+        {
+            spawnPoints = FindObjectsOfType<NetworkStartPosition>();
+        }
     }
     public void TakeDamage(int number)
     {
@@ -29,7 +34,30 @@ public class TankBlood : MonoBehaviour
     }
     void Dead()
     {
-        Destroy(gameObject);
-        Instantiate(Destroyed, transform.localPosition, transform.rotation);
+        GameObject go = Instantiate(Destroyed, transform.localPosition, transform.rotation);
+        Destroy(go, 5);
+        StartCoroutine(WaitForRespawn());
+        gameObject.SetActive(false);
+        RpcRespawn();
+    }
+    IEnumerator WaitForRespawn()
+    {
+        yield return new WaitForSeconds(5);
+        gameObject.SetActive(true);
+    }
+    [ClientRpc]
+    void RpcRespawn()
+    {
+        if (isLocalPlayer)
+        {
+            Vector3 spawnPoint = Vector3.zero;
+
+            if (spawnPoints != null && spawnPoints.Length > 0)
+            {
+                spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)].transform.position;
+            }
+            Total = 100;
+            transform.position = spawnPoint;
+        }
     }
 }
