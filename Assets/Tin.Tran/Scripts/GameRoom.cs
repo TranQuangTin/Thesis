@@ -27,9 +27,3 @@ public class GameRoom : MonoBehaviour
     }
 
 }
-public enum GameType
-{
-    Online,
-    LAN,
-    Offline
-}

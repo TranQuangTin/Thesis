@@ -13,8 +13,6 @@ public class T_BroadCastController : NetworkDiscovery
         get;
         protected set;
     }
-
-
     private void Start()
     {
         manager = NetworkManager.singleton;

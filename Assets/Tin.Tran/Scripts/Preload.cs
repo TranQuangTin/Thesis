@@ -98,8 +98,3 @@ public class Preload : MonoBehaviour
         }
     }
 }
-public class ChatMessage : MessageBase
-{
-    public string Name;
-    public string Content;
-}
