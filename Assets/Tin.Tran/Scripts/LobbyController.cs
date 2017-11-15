@@ -4,10 +4,14 @@ using UnityEngine;
 using UnityEngine.UI;
 using Alta.Plugin;
 using UnityEngine.Networking.Match;
+using System;
 
 public class LobbyController : MonoBehaviour
 {
-
+    [SerializeField]
+    public GameObject Tank;
+    [SerializeField]
+    public ColorPickerTriangle Colorpicker;
     [SerializeField]
     private InputField OnlineRoomName;
     [SerializeField]
@@ -18,22 +22,58 @@ public class LobbyController : MonoBehaviour
     private Transform ListOnlineGameListParent;
     [SerializeField]
     private Transform ListLANGameListParent;
+    [SerializeField]
+    private InputField Name;
 
 
     private T_BroadCastController broadcast;
     private T_Host_Join hostControll;
+    private GameValues values;
 
 
-    public static LobbyController Instance
+    public static LobbyController _singleton
     {
         get;
         protected set;
     }
-
+    private void Awake()
+    {
+        _singleton = this;
+    }
     private void Start()
     {
-        broadcast = gameObject.GetComponent<T_BroadCastController>();
-        hostControll = gameObject.GetComponent<T_Host_Join>();
+        values = T_NetworkManager._singleton.gameObject.GetComponent<GameValues>();
+        broadcast = T_BroadCastController._singleton;
+        hostControll = T_Host_Join._singleton;
+        Colorpicker.OnColorChange += OnChangeColor;
+    }
+
+    private void OnChangeColor(Color color)
+    {
+        values.TankColor = color;
+        foreach (Material mt in Tank.GetComponent<Renderer>().materials)
+        {
+            if (mt.name.IndexOf("TankColour") == 0)
+            {
+                mt.color = color;
+                break;
+            }
+        }
+        foreach (Renderer rd in Tank.GetComponentsInChildren<Renderer>())
+        {
+            foreach (Material mt in rd.materials)
+            {
+                if (mt.name.IndexOf("TankColour") == 0)
+                {
+                    mt.color = color;
+                    break;
+                }
+            }
+        }
+    }
+    private void OnDestroy()
+    {
+        Colorpicker.OnColorChange -= OnChangeColor;
     }
     public void CreateLANRoom()
     {
@@ -80,5 +120,10 @@ public class LobbyController : MonoBehaviour
         }
         GameRoom room1 = ListLANGameListParent.CreateChild(GameItemPrefabs);
         room1.Init("No existing rooms!", null, null, GameType.None);
+    }
+    public string GetName()
+    {
+        // Debug.Log(Environment.MachineName);
+        return Environment.MachineName;
     }
 }

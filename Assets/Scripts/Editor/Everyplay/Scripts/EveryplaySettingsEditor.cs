@@ -11,6 +11,7 @@ using System.IO;
 [CustomEditor(typeof(EveryplaySettings))]
 public class EveryplaySettingsEditor : Editor
 {
+    public bool IsBuildTargetEnabled;
     public const string settingsFile = "EveryplaySettings";
     public const string settingsFileExtension = ".asset";
     public const string testButtonsResourceFile = "everyplay-test-buttons.png";

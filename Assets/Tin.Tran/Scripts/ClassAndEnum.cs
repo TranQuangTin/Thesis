@@ -1,4 +1,4 @@
-﻿
+﻿using UnityEngine;
 using UnityEngine.Networking;
 
 public class ChatMessage : MessageBase
@@ -14,3 +14,9 @@ public enum GameType
     Offline,
     None
 }
+public enum MsType
+{
+    IN, OUT
+}
+public delegate void ColorChange(Color color);
+public delegate void OnClientConnected(NetworkMessage msg);

@@ -7,17 +7,23 @@ public class T_BroadCastController : NetworkDiscovery
 {
     public Dictionary<string, string> ListGames;
     private Dictionary<string, Coroutine> ListIPs;
-    private NetworkManager manager;
-    public static T_BroadCastController Instance
+    private T_NetworkManager manager;
+    public static T_BroadCastController _singleton
     {
         get;
         protected set;
     }
+    private void OnEnable()
+    {
+        _singleton = this;
+    }
     private void Start()
     {
-        manager = NetworkManager.singleton;
+        Initialize();
+        manager = T_NetworkManager._singleton;
         ListIPs = new Dictionary<string, Coroutine>();
         ListGames = new Dictionary<string, string>();
+        StartAsClient();
     }
     public override void OnReceivedBroadcast(string fromAddress, string data)
     {
@@ -42,13 +48,27 @@ public class T_BroadCastController : NetworkDiscovery
     }
     public void CreateRoom(string roomName)
     {
+        if (string.IsNullOrEmpty(LobbyController._singleton.GetName()))
+        {
+            Debug.Log("Haven't enter name");
+            return;
+        }
+        StopBroadcast();
         broadcastData = roomName;
         StartAsServer();
+        Debug.Log("start server");
         manager.StartHost();
     }
     public void JoinRoom(string address)
     {
+        if (string.IsNullOrEmpty(LobbyController._singleton.GetName()))
+        {
+            Debug.Log("Haven't enter name");
+            return;
+        }
+        manager.Name = LobbyController._singleton.GetName();
         manager.networkAddress = address;
         manager.StartClient();
+        StopBroadcast();
     }
 }

@@ -8,19 +8,26 @@ using UnityEngine.Networking.Match;
 public class T_Host_Join : MonoBehaviour
 {
     public List<MatchInfoSnapshot> ListInternetMatch;
-
-    [SerializeField]
+    
     private uint roomSize = 6;
     private string roomName;
-    private NetworkManager networkManager;
-    public static T_Host_Join Instance
+    private T_NetworkManager networkManager;
+    public static T_Host_Join _singleton
     {
         get;
         protected set;
     }
+    private void OnEnable()
+    {
+        _singleton = this;
+    }
     void Start()
     {
-        networkManager = NetworkManager.singleton;
+        networkManager = T_NetworkManager._singleton;
+        if (networkManager == null)
+        {
+            Debug.Log("Null");
+        }
         if (networkManager.matchMaker == null)
         {
             networkManager.StartMatchMaker();
@@ -45,7 +52,7 @@ public class T_Host_Join : MonoBehaviour
     {
         networkManager.OnMatchCreate(success, extendedInfo, responseData);
         if (!success)
-            LobbyController.Instance.CreateOnlineRoomFail();
+            LobbyController._singleton.CreateOnlineRoomFail();
     }
     #endregion
     #region Join

@@ -4,9 +4,9 @@ using UnityEngine;
 using UnityEngine.Networking;
 
 
-//multy
 public class TankBlood : NetworkBehaviour
 {
+    [SyncVar(hook = "OnChangeHealth")]
     public int Total;
     public GameObject BloodCube;
     public GameObject Destroyed;
@@ -27,10 +27,11 @@ public class TankBlood : NetworkBehaviour
             BloodCube.SetActive(false);
             Dead();
         }
-        else
-        {
-            BloodCube.transform.localScale = new Vector3(Total * 1.0f / 100f, 0.05f, 0.05f);
-        }
+    }
+    void OnChangeHealth(int helth)
+    {
+        Total = helth;
+        BloodCube.transform.localScale = new Vector3(Total * 1.0f / 100f, 0.05f, 0.05f);
     }
     void Dead()
     {

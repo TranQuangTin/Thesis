@@ -13,9 +13,12 @@ public class TankMove : NetworkBehaviour
 
     private void Start()
     {
-        Debug.Log("Tank Move start");
         rigidbody = gameObject.GetComponent<Rigidbody>();
         MainCamera = Camera.main.transform;
+        if (!isLocalPlayer) return;
+        MainCamera.SetParent(gameObject.transform);
+        MainCamera.localRotation = Quaternion.Euler(18, 0, 0);
+        MainCamera.localPosition = new Vector3(0, 4, -5);
     }
     private void Update()
     {
@@ -34,7 +37,7 @@ public class TankMove : NetworkBehaviour
         Vector3 movement = transform.forward * value * 4 * Time.deltaTime;
         Vector3 target = rigidbody.position + movement;
         rigidbody.MovePosition(target);
-        MainCamera.position = new Vector3(target.x, target.y + 5.5f, target.z - 9);
+        // MainCamera.position = new Vector3(target.x, target.y + 5.5f, target.z - 9);
     }
 
 

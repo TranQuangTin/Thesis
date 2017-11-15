@@ -20,10 +20,10 @@ public class GameRoom : MonoBehaviour
     {
         if (gameType == GameType.LAN)
             if (!string.IsNullOrEmpty(LANAdress))
-                T_BroadCastController.Instance.JoinRoom(LANAdress);
+                T_BroadCastController._singleton.JoinRoom(LANAdress);
         if (gameType == GameType.Online)
             if (netInfor != null)
-                T_Host_Join.Instance.JoinRoom(netInfor);
+                T_Host_Join._singleton.JoinRoom(netInfor);
     }
 
 }
