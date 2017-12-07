@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Crate
   - Tank
+  - Medical
+  - Enemy
   layers:
   - Default
   - TransparentFX

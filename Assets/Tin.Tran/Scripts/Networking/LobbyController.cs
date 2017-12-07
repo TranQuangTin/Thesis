@@ -25,6 +25,8 @@ public class LobbyController : MonoBehaviour
     [SerializeField]
     private InputField Name;
 
+    public Text TxtLevel;
+
 
     private T_BroadCastController broadcast;
     private T_Host_Join hostControll;
@@ -42,12 +44,16 @@ public class LobbyController : MonoBehaviour
     }
     private void Start()
     {
+        TxtLevel.text = "Your current level: " + PlayerPrefs.GetInt("Level");
         values = T_NetworkManager._singleton.gameObject.GetComponent<GameValues>();
         broadcast = T_BroadCastController._singleton;
         hostControll = T_Host_Join._singleton;
         Colorpicker.OnColorChange += OnChangeColor;
     }
-
+    public void PlayOffline()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene(Preload1.Global.GetCurrentLevel().SceneName);
+    }
     private void OnChangeColor(Color color)
     {
         values.TankColor = color;

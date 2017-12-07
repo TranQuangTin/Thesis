@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class ShellScript : MonoBehaviour
 {
+    public GameObject Parent;
     public GameObject Trail;
     private void OnCollisionEnter(Collision collision)
     {
+        if (collision.gameObject == Parent) return;
         if (collision.gameObject.tag == "Tank")
             collision.gameObject.GetComponent<TankBlood>().TakeDamage(20);
         Trail.SetActive(false);
