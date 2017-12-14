@@ -45,32 +45,35 @@ public class Map_Manager : MonoBehaviour
     }
     public void Play()
     {
+        //level.TotalEnemyAtTime: lấy số lượng địch tối đa
         for (int i = 0; i < level.TotalEnemyAtTime; i++)
         {
             Spawn();
         }
         InforPanel.SetActive(false);
     }
-
-    public void OnEnemyDestroyed(AloneBlood go)
-    {
-        if (CurrentSpawn < level.TotalEnemy)
-        {
-            Spawn();
-        }
-        if (ListEnemy.Count == 0)
-        {
-            // win
-            Debug.Log("Thang");
-            PlayerPrefs.SetInt("Level", PlayerPrefs.GetInt("Level") + 1);
-            WinLose.Global.ShowResult(true);
-        }
-    }
     public void Spawn()
     {
         CurrentSpawn++;
         int s = Random.Range(0, ListStartSpawn.Count);
+        // tạo đối tượng địch tại một vị trí ngẫu nhiên
         GameObject enemy = Instantiate(EnemyPrefab, ListStartSpawn[s].position, ListStartSpawn[s].rotation);
         ListEnemy.Add(enemy);
+    }
+    public void OnEnemyDestroyed(AloneBlood go)
+    {
+        // kiểm tra xem đã tạo hết số lượng địch trong một level chưa
+        if (CurrentSpawn < level.TotalEnemy)
+        {
+            // nếu chứ hết thì tiếp tục tạo
+            Spawn();
+        }
+        // nếu không còn đối thủ nào thì người chơi đã chiến thắng
+        if (ListEnemy.Count == 0)
+        {
+            Debug.Log("Win");
+            PlayerPrefs.SetInt("Level", PlayerPrefs.GetInt("Level") + 1);
+            WinLose.Global.ShowResult(true);
+        }
     }
 }

@@ -47,7 +47,7 @@ public class LevelController : MonoBehaviour
     }
     public void StartClick()
     {
-        StartCoroutine(CountDown.StartCountDown(lv.Time));
+        StartCoroutine(CountDown.StartCountDown(lv.Time, null));
         Map_Manager.Global.Play();
     }
 }

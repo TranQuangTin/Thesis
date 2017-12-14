@@ -6,6 +6,7 @@ public class AloneShell : MonoBehaviour
 {
     public GameObject Parent;
     public GameObject Trail;
+    // bắt sự kiện va chạm và chạy animation
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject == Parent) return;

@@ -47,7 +47,7 @@ public class T_BroadCastController : NetworkDiscovery
         ListGames.Remove(key);
     }
     public void CreateRoom(string roomName)
-    {
+    {// tạo phòng mới
         if (string.IsNullOrEmpty(LobbyController._singleton.GetName()))
         {
             Debug.Log("Haven't enter name");
@@ -60,12 +60,11 @@ public class T_BroadCastController : NetworkDiscovery
         manager.StartHost();
     }
     public void JoinRoom(string address)
-    {
+    {// gia nhập phòng có sẵn
         if (string.IsNullOrEmpty(LobbyController._singleton.GetName()))
         {
             Debug.Log("Haven't enter name");
-            return;
-        }
+            return;  }
         manager.Name = LobbyController._singleton.GetName();
         manager.networkAddress = address;
         manager.StartClient();

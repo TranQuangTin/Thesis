@@ -22,11 +22,6 @@ public class TankMove : NetworkBehaviour
     }
     private void Update()
     {
-        //multy
-        if (Input.GetKeyDown(KeyCode.F2))
-        {
-            Debug.Log("aaa: " + isLocalPlayer);
-        }
         if (!isLocalPlayer) return;
         Move(Input.GetAxis("Vertical"));
         Turn(Input.GetAxis("Horizontal"));
@@ -46,5 +41,9 @@ public class TankMove : NetworkBehaviour
         float turn = value * 70 * Time.deltaTime;
         Quaternion turnRotation = Quaternion.Euler(0f, turn, 0f);
         rigidbody.MoveRotation(rigidbody.rotation * turnRotation);
+    }
+    public void ReturnCamera()
+    {
+        MainCamera.SetParent(transform.parent);
     }
 }

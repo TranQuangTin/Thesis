@@ -40,19 +40,23 @@ public class T_Host_Join : MonoBehaviour
     }
 
     public void CreateRoom()
-    {
+    { // Tạo phòng mới
         if (!string.IsNullOrEmpty(roomName))
         {
             Debug.Log("Creating Room: \"" + roomName + "\" for " + roomSize + " players.");
             networkManager.matchMaker.CreateMatch(roomName, roomSize, true, "", "", "", 0, 0, OnCreateMatch);
         }
     }
-
     private void OnCreateMatch(bool success, string extendedInfo, MatchInfo responseData)
-    {
+    { // callback khi tạo phòng
         networkManager.OnMatchCreate(success, extendedInfo, responseData);
         if (!success)
             LobbyController._singleton.CreateOnlineRoomFail();
+    }
+    public void JoinRoom(MatchInfoSnapshot _match)
+    {// vào phòng đã chọn
+        networkManager.matchMaker.JoinMatch(_match.networkId, "", "", "", 0, 0, networkManager.OnMatchJoined);
+        StartCoroutine(WaitForJoin());
     }
     #endregion
     #region Join
@@ -79,11 +83,6 @@ public class T_Host_Join : MonoBehaviour
             Debug.Log("Found " + matchList.Count + " matchs on Internet!");
             ListInternetMatch = matchList;
         }
-    }
-    public void JoinRoom(MatchInfoSnapshot _match)
-    {
-        networkManager.matchMaker.JoinMatch(_match.networkId, "", "", "", 0, 0, networkManager.OnMatchJoined);
-        StartCoroutine(WaitForJoin());
     }
 
     IEnumerator WaitForJoin()
