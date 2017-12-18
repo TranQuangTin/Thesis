@@ -72,9 +72,9 @@ public class TankController : NetworkBehaviour
     #endregion
 
     public static TankController Global;
-    public CountDown cd;
+    public GameObject cd;
     private GameObject Tank;
-    private NetworkStartPosition[] spawnPoints;
+    public NetworkStartPosition[] spawnPoints;
     private void Awake()
     {
         Global = this;
@@ -83,17 +83,17 @@ public class TankController : NetworkBehaviour
     {
         spawnPoints = FindObjectsOfType<NetworkStartPosition>();
     }
-    public void RpcRespawn(GameObject Tank)
+    public void Respawn(GameObject Tank)
     {
         Debug.Log("Vo day");
         this.Tank = Tank;
-        cd.gameObject.SetActive(true);
+        cd.SetActive(true);
         StartCoroutine(abc());
     }
     IEnumerator abc()
     {
-        yield return new WaitForSeconds(1f);
-        cd.StartCountDown(5, Onlife);
+        yield return new WaitForSeconds(0.1f);
+        cd.GetComponent<CountDown>().Count(5, Onlife);
     }
     public void Onlife()
     {
@@ -104,5 +104,10 @@ public class TankController : NetworkBehaviour
         }
         Tank.transform.position = spawnPoint;
         Tank.SetActive(true);
+    }
+    public IEnumerator ABC(GameObject go)
+    {
+        yield return new WaitForSeconds(5);
+        go.SetActive(true);
     }
 }

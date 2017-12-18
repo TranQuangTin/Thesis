@@ -91,7 +91,8 @@ public class LobbyController : MonoBehaviour
     {
         if (string.IsNullOrEmpty(OnlineRoomName.text))
             return;
-        broadcast.CreateRoom(OnlineRoomName.text);
+        hostControll.SetRoomName(OnlineRoomName.text);
+        hostControll.CreateRoom();
     }
     public void CreateOnlineRoomFail()
     {

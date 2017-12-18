@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Map_Manager : MonoBehaviour
 {
@@ -15,10 +16,12 @@ public class Map_Manager : MonoBehaviour
     public GameObject EnemyPrefab;
     public GameObject CoudownObj;
     public GameObject InforPanel;
+    public Text Score;
 
     private List<Transform> ListStartSpawn;
     private List<GameObject> ListEnemy;
     private int CurrentSpawn = 0;
+    private int score;
     private void Awake()
     {
         Global = this;
@@ -34,7 +37,9 @@ public class Map_Manager : MonoBehaviour
         InforPanel.SetActive(true);
         level = Preload1.Global.GetCurrentLevel();
         if (level.Mode == GameMode.Time)
+        {
             CoudownObj.SetActive(true);
+        }
         else
         {
             Debug.Log("vao day");
@@ -54,14 +59,25 @@ public class Map_Manager : MonoBehaviour
     }
     public void Spawn()
     {
+        if (ListEnemy.Count >= level.TotalEnemy) return;
         CurrentSpawn++;
         int s = Random.Range(0, ListStartSpawn.Count);
         // tạo đối tượng địch tại một vị trí ngẫu nhiên
         GameObject enemy = Instantiate(EnemyPrefab, ListStartSpawn[s].position, ListStartSpawn[s].rotation);
         ListEnemy.Add(enemy);
     }
-    public void OnEnemyDestroyed(AloneBlood go)
+    public void OnEnemyDestroyed(GameObject go)
     {
+        score++;
+        if (ListEnemy.Contains(go)) ListEnemy.Remove(go);
+        if (level.Mode == GameMode.Time)
+        {
+            Score.text = score.ToString();
+        }
+        else
+        {
+            Score.text = score.ToString() + "/" + level.TotalEnemy;
+        }
         // kiểm tra xem đã tạo hết số lượng địch trong một level chưa
         if (CurrentSpawn < level.TotalEnemy)
         {

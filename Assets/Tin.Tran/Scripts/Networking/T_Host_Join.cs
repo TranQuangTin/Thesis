@@ -8,7 +8,7 @@ using UnityEngine.Networking.Match;
 public class T_Host_Join : MonoBehaviour
 {
     public List<MatchInfoSnapshot> ListInternetMatch;
-    
+
     private uint roomSize = 6;
     private string roomName;
     private T_NetworkManager networkManager;

@@ -9,6 +9,12 @@ public class AloneShoot : MonoBehaviour
 
 
     private bool flag = true;
+    private AudioSource audio;
+
+    private void Start()
+    {
+        audio = gameObject.GetComponent<AudioSource>();
+    }
     // Update is called once per frame
     void Update()
     {
@@ -27,6 +33,7 @@ public class AloneShoot : MonoBehaviour
             bulletSpawn.rotation);
         bullet.GetComponent<Rigidbody>().velocity = bullet.transform.forward * 10;
         bullet.GetComponent<AloneShell>().Parent = gameObject;
+        SoundManager.Global.Shoot(audio);
         //multy
         //NetworkServer.Spawn(bullet);
         Destroy(bullet, 2.0f);

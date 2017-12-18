@@ -10,9 +10,12 @@
       <TimeBetween2Shoot>1</TimeBetween2Shoot>
       <TimeBetween2EnemyShoot>2</TimeBetween2EnemyShoot>
       <PlayerDame>20</PlayerDame>
-      <EnemyDame>10</EnemyDame>
+      <EnemyDame>2</EnemyDame>
       <PlayerBlood>100</PlayerBlood>
       <EnemyBlood>100</EnemyBlood>
+<TotalEnemy>1</TotalEnemy>
+<TotalEnemyAtTime>4</TotalEnemyAtTime>
+<TimeSpawnPharmacy>10</TimeSpawnPharmacy>
       <Speed>8</Speed>
       <RotateSpeed>140</RotateSpeed>
       <EnemySpeed>4</EnemySpeed>

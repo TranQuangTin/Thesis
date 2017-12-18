@@ -8,9 +8,11 @@ public class AloneBlood : MonoBehaviour
     public GameObject BloodCube;
     public GameObject Destroyed;
     private Transform[] spawnPoints;
+    private AudioSource audio;
     private void Start()
     {
         Total = 100;
+        audio = gameObject.GetComponent<AudioSource>();
     }
     public void TakeDamage(float number)
     {
@@ -33,8 +35,9 @@ public class AloneBlood : MonoBehaviour
         }
         else
         {
-            Map_Manager.Global.OnEnemyDestroyed(this);
+            Map_Manager.Global.OnEnemyDestroyed(this.gameObject);
         }
+        //SoundManager.Global.Explore(audio);
         Destroy(gameObject);
     }
     IEnumerator WaitForRespawn()

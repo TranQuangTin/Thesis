@@ -13,6 +13,7 @@ public class EnemyController : MonoBehaviour
     private bool flag = true;
     private float speed;
     private float rotatespeed = 3f;
+    private AudioSource audio;
     private void Start()
     {
         if (Preload1.Global == null)
@@ -20,6 +21,7 @@ public class EnemyController : MonoBehaviour
             UnityEngine.SceneManagement.SceneManager.LoadScene(0);
             return;
         }
+        audio = gameObject.GetComponent<AudioSource>();
         rigidbody = gameObject.GetComponent<Rigidbody>();
         StartCoroutine(CheckDistance());
         rigidbody.velocity = transform.forward * 10;
@@ -72,6 +74,7 @@ public class EnemyController : MonoBehaviour
             bulletSpawn.rotation);
         bullet.GetComponent<Rigidbody>().velocity = bullet.transform.forward * 10;
         bullet.GetComponent<AloneShell>().Parent = gameObject;
+        SoundManager.Global.Shoot(audio);
         //multy
         //NetworkServer.Spawn(bullet);
         Destroy(bullet, 2.0f);

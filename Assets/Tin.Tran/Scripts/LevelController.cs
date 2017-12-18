@@ -14,6 +14,7 @@ public class LevelController : MonoBehaviour
     public Text EnemyDame;
     public Text PlayerSpeed;
     public Text EnemySpeed;
+    public Text TotalEnemy;
     public CountDown CountDown;
     LevelInfor lv;
     private void Start()
@@ -43,11 +44,12 @@ public class LevelController : MonoBehaviour
             EnemyDame.text = lv.EnemyDame + "/" + lv.EnemyBlood;
             PlayerSpeed.text = lv.Speed + "/" + lv.RotateSpeed;
             EnemySpeed.text = lv.EnemySpeed + "/" + lv.EnemyRotateSpeed;
+            TotalEnemy.text = lv.TotalEnemy.ToString();
         }
     }
     public void StartClick()
     {
-        StartCoroutine(CountDown.StartCountDown(lv.Time, null));
+        CountDown.Count(lv.Time, null);
         Map_Manager.Global.Play();
     }
 }

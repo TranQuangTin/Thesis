@@ -19,7 +19,7 @@ public class TankBlood : NetworkBehaviour
         Total -= number;
         if (Total <= 0)
         {
-            BloodCube.SetActive(false);
+            //BloodCube.SetActive(false);
             Dead();
         }
     }
@@ -30,10 +30,37 @@ public class TankBlood : NetworkBehaviour
     }
     void Dead()
     {
-        GameObject go = Instantiate(Destroyed, transform.localPosition, transform.rotation);
-        gameObject.GetComponent<TankMove>().ReturnCamera();
-        gameObject.SetActive(false);
         if (isLocalPlayer)
-            TankController.Global.RpcRespawn(gameObject);
+        {
+            //gameObject.GetComponent<TankMove>().ReturnCamera();
+            Total = 100;
+            if (isServer)
+                RpcRespawn();
+            else Cmdabc();
+
+            //TankController.Global.Respawn(gameObject);
+        }
+        GameObject go = Instantiate(Destroyed, transform.localPosition, transform.rotation);
+    }
+    [Command]
+    void Cmdabc()
+    {
+        RpcRespawn(); Total = 100;
+    }
+    [ClientRpc]
+    void RpcRespawn()
+    {
+        if (isLocalPlayer)
+        {
+            Total = 100;
+            Vector3 spawnPoint = Vector3.zero;
+            if (TankController.Global.spawnPoints != null && TankController.Global.spawnPoints.Length > 0)
+            {
+                spawnPoint = TankController.Global.spawnPoints[Random.Range(0, TankController.Global.spawnPoints.Length)].transform.position;
+            }
+            gameObject.GetComponent<Rigidbody>().MovePosition(spawnPoint);
+            gameObject.GetComponent<Rigidbody>().MoveRotation(Quaternion.Euler(Vector3.zero));
+            GameObject go = Instantiate(Destroyed, transform.localPosition, transform.rotation);
+        }
     }
 }

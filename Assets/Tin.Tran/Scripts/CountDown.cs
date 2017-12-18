@@ -8,23 +8,25 @@ public class CountDown : MonoBehaviour
 {
     public static CountDown Global;
     public Text TxtTime;
-    public IEnumerator StartCountDown(int time, Action timeout)
+    private int time;
+    public void Count(int t, Action timeout)
     {
-        int t = time;
-        while (true)
+        time = t;
+        StartCoroutine(StartCountDown(timeout));
+    }
+    public IEnumerator StartCountDown(Action timeout)
+    {
+        if (time >= 0)
         {
-            if (t >= 0)
-            {
-                TxtTime.text = t.ToString();
-                yield return new WaitForSeconds(1);
-                t--;
-            }
-            else
-            {
-                //timeout-- lose
-                gameObject.SetActive(false);
-                timeout();
-            }
+            TxtTime.text = time.ToString();
+            yield return new WaitForSeconds(1);
+            time--;
+            StartCoroutine(StartCountDown(timeout));
+        }
+        else
+        {
+            timeout();
+            gameObject.SetActive(false);
         }
     }
 }
