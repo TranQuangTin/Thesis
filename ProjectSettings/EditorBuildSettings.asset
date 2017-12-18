@@ -17,3 +17,30 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Tin.Tran/Scenes/PlayAlone1.unity
     guid: 8e37fbb98ebb6ed48a19f7247f615b2f
+  - enabled: 1
+    path: Assets/Tin.Tran/Scenes/PlayAlone10.unity
+    guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/Tin.Tran/Scenes/PlayAlone2.unity
+    guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/Tin.Tran/Scenes/PlayAlone3.unity
+    guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/Tin.Tran/Scenes/PlayAlone4.unity
+    guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/Tin.Tran/Scenes/PlayAlone5.unity
+    guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/Tin.Tran/Scenes/PlayAlone6.unity
+    guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/Tin.Tran/Scenes/PlayAlone7.unity
+    guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/Tin.Tran/Scenes/PlayAlone8.unity
+    guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/Tin.Tran/Scenes/PlayAlone9.unity
+    guid: 00000000000000000000000000000000

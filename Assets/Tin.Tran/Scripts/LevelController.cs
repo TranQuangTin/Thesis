@@ -49,7 +49,11 @@ public class LevelController : MonoBehaviour
     }
     public void StartClick()
     {
-        CountDown.Count(lv.Time, null);
+        CountDown.Count(lv.Time, End);
         Map_Manager.Global.Play();
+    }
+    public void End()
+    {
+       // if()
     }
 }

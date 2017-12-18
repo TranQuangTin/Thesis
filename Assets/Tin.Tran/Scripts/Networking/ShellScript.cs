@@ -10,7 +10,7 @@ public class ShellScript : MonoBehaviour
     {
         if (collision.gameObject == Parent) return;
         if (collision.gameObject.tag == "Tank")
-            collision.gameObject.GetComponent<TankBlood>().TakeDamage(20);
+            collision.gameObject.GetComponent<TankBlood>().TakeDamage(Parent);
         Trail.SetActive(false);
         float lifetime = 0;
         ParticleSystem[] systems = GetComponentsInChildren<ParticleSystem>();

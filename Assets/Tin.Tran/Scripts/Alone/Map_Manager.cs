@@ -70,22 +70,17 @@ public class Map_Manager : MonoBehaviour
     {
         score++;
         if (ListEnemy.Contains(go)) ListEnemy.Remove(go);
-        if (level.Mode == GameMode.Time)
-        {
-            Score.text = score.ToString();
-        }
-        else
-        {
-            Score.text = score.ToString() + "/" + level.TotalEnemy;
-        }
+        Score.text = score.ToString() + "/" + level.TotalEnemy;
         // kiểm tra xem đã tạo hết số lượng địch trong một level chưa
-        if (CurrentSpawn < level.TotalEnemy)
+        if (CurrentSpawn < level.TotalEnemy && level.Mode == GameMode.EndLife)
         {
             // nếu chứ hết thì tiếp tục tạo
             Spawn();
         }
+        else if (level.Mode == GameMode.Time)
+            Spawn();
         // nếu không còn đối thủ nào thì người chơi đã chiến thắng
-        if (ListEnemy.Count == 0)
+        if (score == level.TotalEnemy)
         {
             Debug.Log("Win");
             PlayerPrefs.SetInt("Level", PlayerPrefs.GetInt("Level") + 1);

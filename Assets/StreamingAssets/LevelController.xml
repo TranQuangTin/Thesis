@@ -13,7 +13,7 @@
       <EnemyDame>2</EnemyDame>
       <PlayerBlood>100</PlayerBlood>
       <EnemyBlood>100</EnemyBlood>
-<TotalEnemy>1</TotalEnemy>
+<TotalEnemy>8</TotalEnemy>
 <TotalEnemyAtTime>4</TotalEnemyAtTime>
 <TimeSpawnPharmacy>10</TimeSpawnPharmacy>
       <Speed>8</Speed>
@@ -25,8 +25,8 @@
     <LevelInfor>
       <Number>2</Number>
       <SceneName>PlayAlone2</SceneName>
-      <Time>30</Time>
-      <Mode>EndLife</Mode>
+      <Time>120</Time>
+      <Mode>Time</Mode>
       <EnemyDistance>50</EnemyDistance>
       <TimeBetween2Shoot>1</TimeBetween2Shoot>
       <TimeBetween2EnemyShoot>2</TimeBetween2EnemyShoot>
@@ -34,6 +34,9 @@
       <EnemyDame>10</EnemyDame>
       <PlayerBlood>100</PlayerBlood>
       <EnemyBlood>100</EnemyBlood>
+<TotalEnemy>2</TotalEnemy>
+<TotalEnemyAtTime>4</TotalEnemyAtTime>
+<TimeSpawnPharmacy>10</TimeSpawnPharmacy>
       <Speed>8</Speed>
       <RotateSpeed>140</RotateSpeed>
       <EnemySpeed>4</EnemySpeed>
@@ -51,6 +54,9 @@
       <EnemyDame>10</EnemyDame>
       <PlayerBlood>100</PlayerBlood>
       <EnemyBlood>100</EnemyBlood>
+<TotalEnemy>8</TotalEnemy>
+<TotalEnemyAtTime>4</TotalEnemyAtTime>
+<TimeSpawnPharmacy>10</TimeSpawnPharmacy>
       <Speed>8</Speed>
       <RotateSpeed>140</RotateSpeed>
       <EnemySpeed>4</EnemySpeed>
@@ -68,6 +74,9 @@
       <EnemyDame>10</EnemyDame>
       <PlayerBlood>100</PlayerBlood>
       <EnemyBlood>100</EnemyBlood>
+<TotalEnemy>8</TotalEnemy>
+<TotalEnemyAtTime>4</TotalEnemyAtTime>
+<TimeSpawnPharmacy>10</TimeSpawnPharmacy>
       <Speed>8</Speed>
       <RotateSpeed>140</RotateSpeed>
       <EnemySpeed>4</EnemySpeed>
@@ -85,6 +94,9 @@
       <EnemyDame>10</EnemyDame>
       <PlayerBlood>100</PlayerBlood>
       <EnemyBlood>100</EnemyBlood>
+<TotalEnemy>8</TotalEnemy>
+<TotalEnemyAtTime>4</TotalEnemyAtTime>
+<TimeSpawnPharmacy>10</TimeSpawnPharmacy>
       <Speed>8</Speed>
       <RotateSpeed>140</RotateSpeed>
       <EnemySpeed>4</EnemySpeed>
@@ -102,6 +114,9 @@
       <EnemyDame>10</EnemyDame>
       <PlayerBlood>100</PlayerBlood>
       <EnemyBlood>100</EnemyBlood>
+<TotalEnemy>8</TotalEnemy>
+<TotalEnemyAtTime>4</TotalEnemyAtTime>
+<TimeSpawnPharmacy>10</TimeSpawnPharmacy>
       <Speed>8</Speed>
       <RotateSpeed>140</RotateSpeed>
       <EnemySpeed>4</EnemySpeed>
@@ -119,6 +134,9 @@
       <EnemyDame>10</EnemyDame>
       <PlayerBlood>100</PlayerBlood>
       <EnemyBlood>100</EnemyBlood>
+<TotalEnemy>8</TotalEnemy>
+<TotalEnemyAtTime>4</TotalEnemyAtTime>
+<TimeSpawnPharmacy>10</TimeSpawnPharmacy>
       <Speed>8</Speed>
       <RotateSpeed>140</RotateSpeed>
       <EnemySpeed>4</EnemySpeed>
@@ -136,6 +154,9 @@
       <EnemyDame>10</EnemyDame>
       <PlayerBlood>100</PlayerBlood>
       <EnemyBlood>100</EnemyBlood>
+<TotalEnemy>8</TotalEnemy>
+<TotalEnemyAtTime>4</TotalEnemyAtTime>
+<TimeSpawnPharmacy>10</TimeSpawnPharmacy>
       <Speed>8</Speed>
       <RotateSpeed>140</RotateSpeed>
       <EnemySpeed>4</EnemySpeed>
@@ -153,6 +174,9 @@
       <EnemyDame>10</EnemyDame>
       <PlayerBlood>100</PlayerBlood>
       <EnemyBlood>100</EnemyBlood>
+<TotalEnemy>8</TotalEnemy>
+<TotalEnemyAtTime>4</TotalEnemyAtTime>
+<TimeSpawnPharmacy>10</TimeSpawnPharmacy>
       <Speed>8</Speed>
       <RotateSpeed>140</RotateSpeed>
       <EnemySpeed>4</EnemySpeed>
@@ -170,6 +194,9 @@
       <EnemyDame>10</EnemyDame>
       <PlayerBlood>100</PlayerBlood>
       <EnemyBlood>100</EnemyBlood>
+<TotalEnemy>8</TotalEnemy>
+<TotalEnemyAtTime>4</TotalEnemyAtTime>
+<TimeSpawnPharmacy>10</TimeSpawnPharmacy>
       <Speed>8</Speed>
       <RotateSpeed>140</RotateSpeed>
       <EnemySpeed>4</EnemySpeed>

@@ -2,25 +2,38 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
-
+using UnityEngine.UI;
 
 public class TankBlood : NetworkBehaviour
 {
     [SyncVar(hook = "OnChangeHealth")]
     public int Total;
+    [SyncVar(hook = "OnChangeScore")]
+    public int Score = 0;
     public GameObject BloodCube;
     public GameObject Destroyed;
+    public Text TxtScore;
     private void Start()
     {
         Total = 100;
+        TxtScore = GameObject.Find("TQTText").GetComponent<Text>();
     }
-    public void TakeDamage(int number)
+    public void OnChangeScore(int score)
     {
-        Total -= number;
+        if (isLocalPlayer)
+        {
+            Score++;
+            TxtScore.text = Score.ToString();
+        }
+    }
+    public void TakeDamage(GameObject parent)
+    {
+        Total -= 20;
         if (Total <= 0)
         {
             //BloodCube.SetActive(false);
             Dead();
+            parent.GetComponent<TankBlood>().Score++;
         }
     }
     void OnChangeHealth(int helth)
@@ -37,9 +50,9 @@ public class TankBlood : NetworkBehaviour
             if (isServer)
                 RpcRespawn();
             else Cmdabc();
-
             //TankController.Global.Respawn(gameObject);
         }
+        gameObject.GetComponent<Rigidbody>().MovePosition(Vector3.zero);
         GameObject go = Instantiate(Destroyed, transform.localPosition, transform.rotation);
     }
     [Command]

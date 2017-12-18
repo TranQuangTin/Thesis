@@ -17,7 +17,7 @@ public class Preload1 : MonoBehaviour
         {
             ListLevel.Add(ll.Number, ll);
         }
-        UnityEngine.SceneManagement.SceneManager.LoadScene("Lobby");
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Lobby"); //PlayerPrefs.SetInt("Level", 2);
     }
     public LevelInfor GetCurrentLevel()
     {
